@@ -1,8 +1,12 @@
 {
-  "name": "self-isomate-api",
+  "name": "leadership-library-api",
   "version": "1.0.0",
-  "description": "Self IsoMate API",
+  "description": "Leadership Library API",
   "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Leadership-Society/leadership-library-api.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node main.js"
@@ -10,7 +14,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@google-cloud/storage": "^5.0.1",
     "body-parser": "~1.19.0",
     "cors": "^2.8.5",
     "crypto-js": "^4.0.0",
