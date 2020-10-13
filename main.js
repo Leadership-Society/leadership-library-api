@@ -9,6 +9,7 @@ var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var mongoose   = require('mongoose');
+require('dotenv').config();
 
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
@@ -19,6 +20,7 @@ var booksController = require('./src/books/books.controller')
 
 // SCHEMAS
 const CONNECTION_STRING = process.env.CONNECTION_STRING;
+console.log(CONNECTION_STRING);
 
 // FUNCTIONS FOR API
 

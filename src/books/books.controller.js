@@ -27,4 +27,4 @@ const booksController = {
 	}
 };
 
-module.exports = categoriesController;
+module.exports = booksController;
