@@ -38,14 +38,11 @@ const reservationsController = {
 						}
 
 						if (res && !error) {
-							console.log('Book found');
 							reservationMade = true;
-
-							console.log(`Reservation has been made? ${reservationMade}`);
 
 							if (reservationMade) {
 								const msg = {
-									to: 'normansophie562@gmail.com', // Change to your recipient
+									to: 'leadershipncl@gmail.com', // Change to your recipient
 									from: 'leadershipncl@gmail.com', // Change to your verified sender
 									subject: `Leadership Library Reservation for ${bookName}`,
 									text: `New Loan Request\n A user has recently requested to borrow a book from the library.\n Details:\n Title: ${res.title}\n Student Number: ${res.studentNumber}\n Email: ${reservation.email}\n Address:\n Line 1: ${reservation.deliveryAddress.line1}\n Line 2: ${reservation.deliveryAddress.line2}\n City: ${reservation.deliveryAddress.city}\n Postcode: ${reservation.deliveryAddress.postcode}\n Please email the above student to confirm whether they can loan the book and when they should expect to be able to have their book delivered to them.\n`,
@@ -71,14 +68,11 @@ const reservationsController = {
 								sgMail
 									.send(msg)
 									.then(() => {
-										console.log('Response sent');
 										response
 											.status(200)
 											.send('Details sent');
 									})
 									.catch((error) => {
-										console.log('Error');
-										console.log(error);
 										response
 											.status(500)
 											.send(error);
