@@ -16,7 +16,8 @@ const swaggerUi = require('swagger-ui-express');
 
 const path = require ('path');
 
-var booksController = require('./src/books/books.controller')
+var booksController = require('./src/books/books.controller');
+const reservationsController = require('./src/reservations/reservations.controller');
 
 // SCHEMAS
 const CONNECTION_STRING = process.env.CONNECTION_STRING;
@@ -42,9 +43,102 @@ app.use(cors());
 // =============================================================================
 var router = express.Router();              // get an instance of the express Router
 
-
+/**
+ * @swagger
+ * tags:
+ *  name: Books
+ *  description: Accessing Books collection
+ * 
+ * path:
+ *  /books:
+ *    get:
+ *      summary: Retrieves books from the books collection.
+ *      tags: [Books]
+ *      parameters:
+ *        - in: query
+ *          name: _id
+ *          schema:
+ *            type: string
+ *          description: Book ID (automatically generated)
+ *        - in: query
+ *          name: title
+ *          schema:
+ *            type: string
+ *          description: Book title
+ *        - in: query
+ *          name: author
+ *          schema:
+ *            type: string
+ *          description: Author of the book
+ *        - in: query
+ *          name: status
+ *          schema:
+ *            type: number
+ *          description: ID for the status (1=available, 2=reserved, 3=quarantined)
+ *      responses:
+ *        "200":
+ *          description: List of books fitting the filters provided
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: array
+ *                items:
+ *                  $ref: '#/components/schemas/Book'
+ *        "404":
+ *          description: No books found.
+ *        "500":
+ *          description: Error retrieving books (database side)
+ */
 router.route('/books')
-    .get(booksController.getBooks)
+  .get(booksController.getBooks)
+;
+
+/**
+ * @swagger
+ * tags:
+ *  name: Reservations
+ *  description: Reserving books to borrow
+ * 
+ * path:
+ *  /reservations:
+ *    post:
+ *      summary: Request to reserve a book
+ *      tags: [Reservations]
+ *      requestBody:
+ *        required: true
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                studentNumber:
+ *                  type: string
+ *                email:
+ *                  type: string
+ *                  format: email
+ *                bookId:
+ *                  type: string
+ *                deliveryAddress:  
+ *                  type: object
+ *                  properties:
+ *                    line1:
+ *                      type: string
+ *                    line2:
+ *                      type: string
+ *                    city:
+ *                      type: string
+ *                    country:
+ *                      type: string
+ *                    postcode:
+ *                      type: string
+ *      responses:
+ *        "200":
+ *          description: Successfully submitted reservation request.
+ *        "500":
+ *          description: There was an error preventing you from submitting your reservation request.
+ */
+router.route('/reservations')
+  .post(reservationsController.addReservation)
 ;
 
 // DOCUMENTATION SETUP
@@ -65,7 +159,7 @@ const options = {
             }
         ]
     },
-    apis: [ './src/books/books.model.js', './main.js' ]
+    apis: [ './src/books/books.model.js', './main.js', './src/reservations/reservations.model.js' ]
   };
 
   const specs = swaggerJsdoc(options);
