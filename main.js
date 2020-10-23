@@ -113,9 +113,10 @@ router.route('/books')
  *              properties:
  *                studentNumber:
  *                  type: string
- *                email:
+ *                deliveryType:
  *                  type: string
- *                  format: email
+ *                phoneNumber:
+ *                  type: string
  *                bookId:
  *                  type: string
  *                deliveryAddress:  
@@ -124,10 +125,6 @@ router.route('/books')
  *                    line1:
  *                      type: string
  *                    line2:
- *                      type: string
- *                    city:
- *                      type: string
- *                    country:
  *                      type: string
  *                    postcode:
  *                      type: string
