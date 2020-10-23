@@ -45,7 +45,7 @@ const reservationsController = {
 								var msg = {}
 								if (reservation.deliveryAddress) {
 									msg = {
-										to: 'sophie.norman2@btinternet.com', // Change to your recipient
+										to: 'leadershipncl@gmail.com', // Change to your recipient
 										from: 'leadershipncl@gmail.com', // Change to your verified sender
 										subject: `Leadership Library Reservation for ${bookName}`,
 										text: `New Loan Request\nA user has recently requested to borrow a book from the library.\nDetails:\nTitle: ${res.title}\nStudent Number: ${res.studentNumber}\nDelivery Type: ${reservation.deliveryType}\nPhone Number: (+44) ${reservation.phoneNumber}\nAddress:\nLine 1: ${reservation.deliveryAddress.line1}\nLine 2: ${reservation.deliveryAddress.line2}\nPostcode: ${reservation.deliveryAddress.postcode}\nDelivery Notes: ${reservation.deliveryNotes}\nPlease email the above student to confirm their booking and to start the process of delivering their book.`,
@@ -69,7 +69,7 @@ const reservationsController = {
 									}
 								} else {
 									msg = {
-										to: 'sophie.norman2@btinternet.com', // Change to your recipient
+										to: 'leadershipncl@gmail.com', // Change to your recipient
 										from: 'leadershipncl@gmail.com', // Change to your verified sender
 										subject: `Leadership Library Reservation for ${bookName}`,
 										text: `New Loan Request\nA user has recently requested to borrow a book from the library.\nDetails:\nTitle: ${res.title}\nStudent Number: ${res.studentNumber}\nDelivery Type: ${reservation.deliveryType}\nPlease email the above student to confirm the book reservation and to arrange a date and time to pick up the book in a public place.`,
