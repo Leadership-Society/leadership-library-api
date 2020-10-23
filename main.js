@@ -36,7 +36,6 @@ mongoose.connect(CONNECTION_STRING, {useNewUrlParser: true, useFindAndModify: fa
 
 app.use(express.static('www'));
 app.set('port', process.env.PORT || 8080);
-app.use(cors());
 
 
 // ROUTES FOR OUR API
