@@ -43,6 +43,7 @@ const reservationsController = {
 
 							if (reservationMade) {
 								var msg = {}
+								res.status = 2
 								if (reservation.deliveryAddress) {
 									msg = {
 										to: 'leadershipncl@gmail.com', // Change to your recipient
