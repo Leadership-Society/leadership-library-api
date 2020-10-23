@@ -27,7 +27,7 @@ const reservationsController = {
 				if (err) {
 					response
 						.status(500)
-						.send('Could make reservation');
+						.send('Could not make reservation');
 				}
 
 				if (success) {
@@ -43,7 +43,6 @@ const reservationsController = {
 
 							if (reservationMade) {
 								var msg = {}
-								res.status = 2
 								if (reservation.deliveryAddress) {
 									msg = {
 										to: 'leadershipncl@gmail.com', // Change to your recipient
