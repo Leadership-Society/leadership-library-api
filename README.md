@@ -1,4 +1,8 @@
-# Leadership Library
+# Leadership Library [ARCHIVED]
+
+## NOTICE: ARCHIVED
+Website is no longer in use. Archiving this API as a result. Please contact any of the maintainers in case of issues.
+
 A Web API for the Leadership Library using ExpressJS and Mongoose.
 
 ## Features
